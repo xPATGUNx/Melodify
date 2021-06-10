@@ -17,13 +17,13 @@ def generate_csv_from_single_midi_file():
 
 
 def generate_csv_batch_from_midi_directory():
-    filecounter = 1
+    file_counter = 1
     for filepath in glob.iglob('../Midi Files/*.mid'):
         print('Converting ' + filepath[14:] + ' to CSV.')
         csv_string = pm.midi_to_csv(filepath)
-        with open('../CSV from MIDI/CSV from Midi ' + str(filecounter) + '.csv', 'w') as f:
+        with open('../CSV from MIDI/CSV from Midi ' + str(file_counter) + '.csv', 'w') as f:
             f.writelines(csv_string)
-            filecounter += 1
+            file_counter += 1
     f.close()
 
 
