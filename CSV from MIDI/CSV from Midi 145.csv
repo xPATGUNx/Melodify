@@ -1,0 +1,65 @@
+0, 0, Header, 0, 1, 96
+1, 0, Start_track
+1, 0, Title_t, "Cymatics - Oracle West Coast MIDI 5 - F# Min\000"
+1, 0, Time_signature, 4, 2, 36, 8
+1, 0, Time_signature, 4, 2, 36, 8
+1, 0, Note_on_c, 0, 45, 40
+1, 0, Note_on_c, 0, 64, 81
+1, 0, Note_on_c, 0, 76, 127
+1, 3, Note_on_c, 0, 57, 80
+1, 3, Note_on_c, 0, 60, 62
+1, 192, Note_on_c, 0, 52, 59
+1, 317, Note_off_c, 0, 57, 99
+1, 324, Note_off_c, 0, 60, 30
+1, 382, Note_on_c, 0, 58, 43
+1, 384, Note_off_c, 0, 45, 64
+1, 384, Note_on_c, 0, 46, 40
+1, 384, Note_off_c, 0, 76, 64
+1, 384, Note_on_c, 0, 77, 127
+1, 385, Note_on_c, 0, 53, 58
+1, 387, Note_on_c, 0, 62, 83
+1, 387, Note_off_c, 0, 64, 72
+1, 387, Note_on_c, 0, 65, 65
+1, 390, Note_off_c, 0, 52, 96
+1, 576, Note_off_c, 0, 46, 64
+1, 576, Note_on_c, 0, 50, 44
+1, 576, Note_on_c, 0, 69, 80
+1, 741, Note_off_c, 0, 69, 37
+1, 743, Note_off_c, 0, 58, 23
+1, 744, Note_off_c, 0, 53, 24
+1, 745, Note_off_c, 0, 62, 114
+1, 756, Note_off_c, 0, 65, 98
+1, 768, Note_on_c, 0, 45, 47
+1, 768, Note_off_c, 0, 50, 64
+1, 768, Note_on_c, 0, 64, 81
+1, 768, Note_on_c, 0, 76, 127
+1, 768, Note_off_c, 0, 77, 64
+1, 771, Note_on_c, 0, 57, 80
+1, 771, Note_on_c, 0, 60, 62
+1, 960, Note_on_c, 0, 52, 59
+1, 1085, Note_off_c, 0, 57, 99
+1, 1092, Note_off_c, 0, 60, 30
+1, 1150, Note_on_c, 0, 58, 43
+1, 1152, Note_off_c, 0, 45, 64
+1, 1152, Note_on_c, 0, 46, 47
+1, 1152, Note_off_c, 0, 76, 64
+1, 1152, Note_on_c, 0, 77, 127
+1, 1153, Note_on_c, 0, 53, 58
+1, 1155, Note_on_c, 0, 62, 83
+1, 1155, Note_off_c, 0, 64, 72
+1, 1155, Note_on_c, 0, 65, 65
+1, 1158, Note_off_c, 0, 52, 96
+1, 1343, Note_off_c, 0, 46, 64
+1, 1344, Note_on_c, 0, 50, 44
+1, 1344, Note_on_c, 0, 70, 80
+1, 1344, Note_on_c, 0, 79, 127
+1, 1509, Note_off_c, 0, 70, 37
+1, 1511, Note_off_c, 0, 58, 23
+1, 1512, Note_off_c, 0, 53, 24
+1, 1513, Note_off_c, 0, 62, 114
+1, 1524, Note_off_c, 0, 65, 98
+1, 1536, Note_off_c, 0, 50, 64
+1, 1536, Note_off_c, 0, 77, 64
+1, 1536, Note_off_c, 0, 79, 64
+1, 1536, End_track
+0, 0, End_of_file

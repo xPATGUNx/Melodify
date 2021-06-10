@@ -1,0 +1,57 @@
+0, 0, Header, 0, 1, 96
+1, 0, Start_track
+1, 0, Title_t, "Cymatics - Oracle Dark MIDI 14 - G Min \000"
+1, 0, Time_signature, 4, 2, 36, 8
+1, 0, Time_signature, 4, 2, 36, 8
+1, 0, Note_on_c, 0, 57, 30
+1, 0, Note_on_c, 0, 88, 59
+1, 95, Note_on_c, 0, 64, 56
+1, 187, Note_on_c, 0, 69, 57
+1, 283, Note_on_c, 0, 71, 50
+1, 297, Note_off_c, 0, 69, 43
+1, 374, Note_on_c, 0, 86, 47
+1, 374, Note_off_c, 0, 88, 95
+1, 376, Note_off_c, 0, 71, 46
+1, 378, Note_on_c, 0, 72, 53
+1, 474, Note_on_c, 0, 71, 58
+1, 481, Note_off_c, 0, 72, 58
+1, 575, Note_on_c, 0, 76, 60
+1, 587, Note_off_c, 0, 71, 62
+1, 668, Note_off_c, 0, 76, 55
+1, 669, Note_on_c, 0, 71, 59
+1, 685, Note_off_c, 0, 57, 59
+1, 688, Note_off_c, 0, 64, 18
+1, 761, Note_on_c, 0, 88, 57
+1, 763, Note_on_c, 0, 57, 52
+1, 768, Note_off_c, 0, 86, 45
+1, 772, Note_off_c, 0, 71, 71
+1, 861, Note_on_c, 0, 64, 56
+1, 954, Note_on_c, 0, 84, 44
+1, 957, Note_on_c, 0, 69, 60
+1, 1052, Note_on_c, 0, 71, 58
+1, 1060, Note_off_c, 0, 69, 45
+1, 1140, Note_on_c, 0, 89, 49
+1, 1142, Note_off_c, 0, 88, 77
+1, 1145, Note_off_c, 0, 71, 8
+1, 1146, Note_on_c, 0, 83, 44
+1, 1147, Note_on_c, 0, 72, 53
+1, 1147, Note_off_c, 0, 84, 64
+1, 1238, Note_off_c, 0, 89, 55
+1, 1239, Note_on_c, 0, 88, 58
+1, 1241, Note_on_c, 0, 71, 57
+1, 1243, Note_off_c, 0, 72, 54
+1, 1331, Note_off_c, 0, 88, 71
+1, 1332, Note_on_c, 0, 86, 47
+1, 1338, Note_on_c, 0, 76, 40
+1, 1349, Note_off_c, 0, 71, 102
+1, 1410, Note_off_c, 0, 83, 64
+1, 1425, Note_on_c, 0, 93, 54
+1, 1429, Note_off_c, 0, 86, 45
+1, 1433, Note_on_c, 0, 71, 43
+1, 1468, Note_off_c, 0, 71, 107
+1, 1469, Note_off_c, 0, 64, 22
+1, 1474, Note_off_c, 0, 57, 26
+1, 1492, Note_off_c, 0, 93, 25
+1, 1524, Note_off_c, 0, 76, 64
+1, 1524, End_track
+0, 0, End_of_file

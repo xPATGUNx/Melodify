@@ -1,0 +1,70 @@
+0, 0, Header, 0, 1, 96
+1, 0, Start_track
+1, 0, Title_t, "Melody \000"
+1, 0, Time_signature, 4, 2, 36, 8
+1, 0, Time_signature, 4, 2, 36, 8
+1, 0, Control_c, 0, 1, 100
+1, 0, Note_on_c, 0, 33, 79
+1, 0, Note_on_c, 0, 72, 107
+1, 48, Note_on_c, 0, 71, 104
+1, 48, Note_off_c, 0, 72, 107
+1, 96, Note_on_c, 0, 69, 102
+1, 96, Note_off_c, 0, 71, 104
+1, 192, Note_off_c, 0, 33, 79
+1, 192, Note_on_c, 0, 38, 74
+1, 192, Note_on_c, 0, 62, 113
+1, 192, Note_off_c, 0, 69, 102
+1, 285, Note_off_c, 0, 62, 113
+1, 288, Note_on_c, 0, 62, 106
+1, 384, Note_off_c, 0, 38, 74
+1, 384, Note_on_c, 0, 41, 74
+1, 384, Note_off_c, 0, 62, 106
+1, 384, Note_on_c, 0, 72, 113
+1, 432, Note_on_c, 0, 65, 99
+1, 432, Note_off_c, 0, 72, 113
+1, 456, Note_off_c, 0, 65, 99
+1, 456, Note_on_c, 0, 77, 98
+1, 480, Note_on_c, 0, 69, 102
+1, 480, Note_off_c, 0, 77, 98
+1, 576, Note_on_c, 0, 40, 74
+1, 576, Note_off_c, 0, 41, 74
+1, 576, Note_on_c, 0, 67, 104
+1, 576, Note_off_c, 0, 69, 102
+1, 672, Note_off_c, 0, 67, 104
+1, 672, Note_on_c, 0, 76, 101
+1, 768, Note_on_c, 0, 33, 73
+1, 768, Note_off_c, 0, 40, 74
+1, 768, Note_on_c, 0, 72, 113
+1, 768, Note_off_c, 0, 76, 101
+1, 816, Note_on_c, 0, 71, 101
+1, 816, Note_off_c, 0, 72, 113
+1, 864, Note_on_c, 0, 69, 105
+1, 864, Note_off_c, 0, 71, 101
+1, 960, Note_off_c, 0, 33, 73
+1, 960, Note_on_c, 0, 38, 78
+1, 960, Note_on_c, 0, 62, 107
+1, 960, Note_off_c, 0, 69, 105
+1, 1053, Note_off_c, 0, 62, 107
+1, 1056, Note_on_c, 0, 62, 103
+1, 1152, Note_off_c, 0, 38, 78
+1, 1152, Note_on_c, 0, 41, 75
+1, 1152, Note_off_c, 0, 62, 103
+1, 1152, Note_on_c, 0, 72, 111
+1, 1200, Note_on_c, 0, 65, 101
+1, 1200, Note_off_c, 0, 72, 111
+1, 1224, Note_off_c, 0, 65, 101
+1, 1224, Note_on_c, 0, 77, 94
+1, 1248, Note_on_c, 0, 69, 106
+1, 1248, Note_off_c, 0, 77, 94
+1, 1344, Note_on_c, 0, 40, 76
+1, 1344, Note_off_c, 0, 41, 75
+1, 1344, Note_on_c, 0, 67, 109
+1, 1344, Note_off_c, 0, 69, 106
+1, 1440, Note_off_c, 0, 67, 109
+1, 1440, Note_on_c, 0, 76, 103
+1, 1526, Control_c, 0, 1, 100
+1, 1526, Control_c, 0, 1, 70
+1, 1533, Note_off_c, 0, 40, 76
+1, 1533, Note_off_c, 0, 76, 103
+1, 1533, End_track
+0, 0, End_of_file

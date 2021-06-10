@@ -1,0 +1,53 @@
+0, 0, Header, 0, 1, 96
+1, 0, Start_track
+1, 0, Title_t, "Melody\000"
+1, 0, Time_signature, 4, 2, 36, 8
+1, 0, Time_signature, 4, 2, 36, 8
+1, 0, Note_on_c, 0, 69, 52
+1, 96, Note_on_c, 0, 76, 68
+1, 288, Note_off_c, 0, 69, 52
+1, 288, Note_on_c, 0, 72, 94
+1, 288, Note_off_c, 0, 76, 68
+1, 312, Note_on_c, 0, 74, 86
+1, 314, Note_off_c, 0, 72, 94
+1, 334, Note_off_c, 0, 74, 86
+1, 336, Note_on_c, 0, 76, 92
+1, 360, Note_on_c, 0, 74, 97
+1, 363, Note_off_c, 0, 76, 92
+1, 378, Note_off_c, 0, 74, 97
+1, 384, Note_on_c, 0, 76, 73
+1, 480, Note_on_c, 0, 81, 97
+1, 672, Note_off_c, 0, 76, 73
+1, 672, Note_off_c, 0, 81, 97
+1, 672, Note_on_c, 0, 81, 100
+1, 696, Note_on_c, 0, 83, 94
+1, 699, Note_off_c, 0, 81, 100
+1, 720, Note_off_c, 0, 83, 94
+1, 720, Note_on_c, 0, 84, 69
+1, 744, Note_on_c, 0, 83, 93
+1, 747, Note_off_c, 0, 84, 69
+1, 762, Note_off_c, 0, 83, 93
+1, 768, Note_on_c, 0, 77, 82
+1, 864, Note_on_c, 0, 84, 93
+1, 1056, Note_off_c, 0, 77, 82
+1, 1056, Note_off_c, 0, 84, 93
+1, 1056, Note_on_c, 0, 84, 106
+1, 1080, Note_on_c, 0, 86, 109
+1, 1083, Note_off_c, 0, 84, 106
+1, 1102, Note_off_c, 0, 86, 109
+1, 1104, Note_on_c, 0, 88, 101
+1, 1128, Note_on_c, 0, 86, 100
+1, 1133, Note_off_c, 0, 88, 101
+1, 1146, Note_off_c, 0, 86, 100
+1, 1152, Note_on_c, 0, 86, 12
+1, 1200, Note_on_c, 0, 81, 100
+1, 1200, Note_off_c, 0, 86, 12
+1, 1248, Note_on_c, 0, 72, 88
+1, 1248, Note_off_c, 0, 81, 100
+1, 1344, Note_off_c, 0, 72, 88
+1, 1344, Note_on_c, 0, 81, 74
+1, 1392, Note_on_c, 0, 88, 64
+1, 1527, Note_off_c, 0, 88, 64
+1, 1529, Note_off_c, 0, 81, 74
+1, 1529, End_track
+0, 0, End_of_file
