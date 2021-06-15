@@ -3,7 +3,7 @@ import torch
 from torch import nn
 import torch.nn.functional as F
 
-with open('../data/Midi out.csv', 'r') as f:
+with open('../data/TrainData.csv', 'r') as f:
     text = f.read()
 
 chars = tuple(set(text))
@@ -16,13 +16,11 @@ encoded = np.array([char2int[ch] for ch in text])
 
 
 def one_hot_encode(arr, n_labels):
-    # Initialize the the encoded array
+
     one_hot = np.zeros((np.multiply(*arr.shape), n_labels), dtype=np.float32)
 
-    # Fill the appropriate elements with ones
     one_hot[np.arange(one_hot.shape[0]), arr.flatten()] = 1.
 
-    # Finally reshape it to get back to the original array
     one_hot = one_hot.reshape((*arr.shape, n_labels))
 
     return one_hot
@@ -42,18 +40,14 @@ def get_batches(arr, n_seqs, n_steps):
     batch_size = n_seqs * n_steps
     n_batches = len(arr) // batch_size
 
-    # Keep only enough characters to make full batches
     arr = arr[:n_batches * batch_size]
 
-    # Reshape into n_seqs rows
     arr = arr.reshape((n_seqs, -1))
 
     for n in range(0, arr.shape[1], n_steps):
 
-        # The features
         x = arr[:, n:n + n_steps]
 
-        # The targets, shifted by one
         y = np.zeros_like(x)
 
         try:
@@ -73,7 +67,6 @@ class CharRNN(nn.Module):
         self.n_hidden = n_hidden
         self.lr = lr
 
-        # Creating character dictionaries
         self.chars = tokens
         self.int2char = dict(enumerate(self.chars))
         self.char2int = {ch: ii for ii, ch in self.int2char.items()}
@@ -82,32 +75,24 @@ class CharRNN(nn.Module):
         self.lstm = nn.LSTM(len(self.chars), n_hidden, n_layers,
                             dropout=drop_prob, batch_first=True)
 
-        # Define a dropout layer
         self.dropout = nn.Dropout(drop_prob)
 
-        # Define the final, fully-connected output layer
         self.fc = nn.Linear(n_hidden, len(self.chars))
 
-        # Initialize the weights
         self.init_weights()
 
     def forward(self, x, hc):
         """ Forward pass through the network.
             These inputs are x, and the hidden/cell state `hc`. """
 
-        # Get x, and the new hidden state (h, c) from the lstm
         x, (h, c) = self.lstm(x, hc)
 
-        # Pass x through the dropout layer
         x = self.dropout(x)
 
-        # Stack up LSTM outputs using view
         x = x.reshape(x.size()[0] * x.size()[1], self.n_hidden)
 
-        # Put x through the fully-connected layer
         x = self.fc(x)
 
-        # Return x and the hidden state (h, c)
         return x, (h, c)
 
     def predict(self, char, h=None, cuda=False, top_k=None):
@@ -155,15 +140,12 @@ class CharRNN(nn.Module):
         """ Initialize weights for fully connected layer """
         initrange = 0.1
 
-        # Set bias tensor to all zeros
         self.fc.bias.data.fill_(0)
-        # FC weights as random uniform
         self.fc.weight.data.uniform_(-1, 1)
 
     def init_hidden(self, n_seqs):
         """ Initializes hidden state """
-        # Create two new tensors with sizes n_layers x n_seqs x n_hidden,
-        # initialized to zero, for hidden state and cell state of LSTM
+
         weight = next(self.parameters()).data
         return (weight.new(self.n_layers, n_seqs, self.n_hidden).zero_(),
                 weight.new(self.n_layers, n_seqs, self.n_hidden).zero_())
@@ -194,7 +176,6 @@ def train(network, data, epochs=10, n_seqs=10, n_steps=50, lr=0.001, clip=5, val
 
     criterion = nn.CrossEntropyLoss()
 
-    # create training and validation data
     val_idx = int(len(data) * (1 - val_frac))
     data, val_data = data[:val_idx], data[val_idx:]
 
@@ -212,15 +193,12 @@ def train(network, data, epochs=10, n_seqs=10, n_steps=50, lr=0.001, clip=5, val
 
             counter += 1
 
-            # One-hot encode our data and make them Torch tensors
             x = one_hot_encode(x, n_chars)
             inputs, targets = torch.from_numpy(x), torch.from_numpy(y)
 
             if cuda:
                 inputs, targets = inputs.cuda(), targets.cuda()
 
-            # Creating new variables for the hidden state, otherwise
-            # we'd backprop through the entire training history
             h = tuple([each.data for each in h])
 
             network.zero_grad()
@@ -231,7 +209,6 @@ def train(network, data, epochs=10, n_seqs=10, n_steps=50, lr=0.001, clip=5, val
 
             loss.backward()
 
-            # `clip_grad_norm` helps prevent the exploding gradient problem in RNNs / LSTMs.
             nn.utils.clip_grad_norm_(network.parameters(), clip)
 
             opt.step()
@@ -244,12 +221,9 @@ def train(network, data, epochs=10, n_seqs=10, n_steps=50, lr=0.001, clip=5, val
 
                 for x, y in get_batches(val_data, n_seqs, n_steps):
 
-                    # One-hot encode our data and make them Torch tensors
                     x = one_hot_encode(x, n_chars)
                     x, y = torch.from_numpy(x), torch.from_numpy(y)
 
-                    # Creating new variables for the hidden state, otherwise
-                    # we'd backprop through the entire training history
                     val_h = tuple([each.data for each in val_h])
 
                     inputs, targets = x, y
@@ -275,7 +249,6 @@ def sample(network, size, prime='The', top_k=None, cuda=False):
 
     network.eval()
 
-    # First off, run through the prime characters
     chars = [ch for ch in prime]
 
     h = network.init_hidden(1)
@@ -285,7 +258,6 @@ def sample(network, size, prime='The', top_k=None, cuda=False):
 
     chars.append(char)
 
-    # Now pass in the previous character and get a new one
     for ii in range(size):
         char, h = network.predict(chars[-1], h, cuda=cuda, top_k=top_k)
         chars.append(char)
@@ -295,23 +267,34 @@ def sample(network, size, prime='The', top_k=None, cuda=False):
 
 if __name__ == '__main__':
 
-    net = CharRNN(chars, n_hidden=512, n_layers=2)
+    train_network = False
 
-    # print(net)
+    if train_network:
 
-    n_seqs, n_steps = 64, 50
+        net = CharRNN(chars, n_hidden=512, n_layers=2)
 
-    train(net, encoded, epochs=25, n_seqs=n_seqs, n_steps=n_steps, lr=0.001, cuda=True, print_every=10)
+        # print(net)
 
-    # change the name, for saving multiple files
-    model_name = 'rnn_1_epoch.net'
+        n_seqs, n_steps = 128, 100
 
-    checkpoint = {'n_hidden': net.n_hidden,
-                  'n_layers': net.n_layers,
-                  'state_dict': net.state_dict(),
-                  'tokens': net.chars}
+        train(net, encoded, epochs=25, n_seqs=n_seqs, n_steps=n_steps, lr=0.001, cuda=True, print_every=10)
 
-    with open(model_name, 'wb') as f:
-        torch.save(checkpoint, f)
+        model_name = 'rnn_1_epoch.net'
 
-    print(sample(net, 2000, prime='1, 0, Note_on_c, 0, 57, 64', top_k=5, cuda=True))
+        checkpoint = {'n_hidden': net.n_hidden,
+                      'n_layers': net.n_layers,
+                      'state_dict': net.state_dict(),
+                      'tokens': net.chars}
+
+        with open(model_name, 'wb') as f:
+            torch.save(checkpoint, f)
+
+        print(sample(net, 2000, prime='1, 0, Note_on_c, 0, 57, 64', top_k=5, cuda=True))
+
+    else:
+        with open('rnn_1_epoch.net', 'rb') as f:
+            checkpoint = torch.load(f)
+
+        loaded = CharRNN(checkpoint['tokens'], n_hidden=checkpoint['n_hidden'], n_layers=checkpoint['n_layers'])
+        loaded.load_state_dict(checkpoint['state_dict'])
+        print(sample(loaded, 2000, cuda=True, top_k=5, prime='1, 0, Note_on_c, 0, 55, 72'))
