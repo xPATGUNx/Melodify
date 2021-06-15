@@ -8,6 +8,7 @@ def generate_csv_from_single_midi_file(path):
     with open('../data/Midi out.csv', 'w') as f:
         f.writelines(csv_string)
 
+    f.close()
     # midi_object = pm.csv_to_midi(csv_string)
 
     # with open('../Midi Files/example_converted.mid', 'wb') as output_file:
@@ -18,7 +19,7 @@ def generate_csv_from_single_midi_file(path):
 def generate_midi_from_single_csv_file(path):
     midi_object = pm.csv_to_midi(path)
 
-    with open('../data/converted.mid', 'wb') as output_file:
+    with open('../data/converted_demo.mid', 'wb') as output_file:
         midi_writer = pm.FileWriter(output_file)
         midi_writer.write(midi_object)
 
@@ -34,7 +35,20 @@ def generate_csv_batch_from_midi_directory():
     f.close()
 
 
+def generate_one_csv_from_many():
+
+    for file in glob.iglob('../CSV from MIDI/*.csv'):
+        with open(file, "r") as f:
+            rows = f.readlines()[5:]
+            rows = (rows[:-2])
+        print('Writing: ' + file)
+        with open("../data/TrainData.csv", "a") as myfile:
+            for element in rows:
+                myfile.write(element)
+
+
 if __name__ == '__main__':
     # generate_csv_from_single_midi_file('../data/Midi Out.mid')
     # generate_csv_batch_from_midi_directory()
-    generate_midi_from_single_csv_file('../data/test.csv')
+    generate_midi_from_single_csv_file('../data/newTest.csv')
+    # generate_one_csv_from_many()
