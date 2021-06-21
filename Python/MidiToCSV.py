@@ -2,6 +2,7 @@ import py_midicsv as pm
 import glob
 
 
+# TODO: Refactor path handling
 def generate_csv_from_single_midi_file(path):
     csv_string = pm.midi_to_csv(path)
 
@@ -9,11 +10,6 @@ def generate_csv_from_single_midi_file(path):
         f.writelines(csv_string)
 
     f.close()
-    # midi_object = pm.csv_to_midi(csv_string)
-
-    # with open('../Midi Files/example_converted.mid', 'wb') as output_file:
-    #     midi_writer = pm.FileWriter(output_file)
-    #     midi_writer.write(midi_object)
 
 
 def generate_midi_from_single_csv_file(path):
@@ -35,7 +31,7 @@ def generate_csv_batch_from_midi_directory():
     f.close()
 
 
-def generate_one_csv_from_many():
+def generate_consolidated_csv_from_midi_batch():
 
     for file in glob.iglob('../CSV from MIDI/*.csv'):
         with open(file, "r") as f:
@@ -51,4 +47,4 @@ if __name__ == '__main__':
     # generate_csv_from_single_midi_file('../data/Midi Out.mid')
     # generate_csv_batch_from_midi_directory()
     generate_midi_from_single_csv_file('../data/newTest.csv')
-    # generate_one_csv_from_many()
+    # generate_consolidated_csv_from_midi_batch()

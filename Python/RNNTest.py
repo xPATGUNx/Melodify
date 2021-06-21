@@ -3,8 +3,8 @@ import torch
 from torch import nn
 import torch.nn.functional as F
 
-with open('../data/TrainData.csv', 'r') as f:
-    text = f.read()
+with open('../data/TrainData.csv', 'r') as data_reader:
+    text = data_reader.read()
 
 chars = tuple(set(text))
 
@@ -275,7 +275,7 @@ if __name__ == '__main__':
 
         # print(net)
 
-        n_seqs, n_steps = 128, 100
+        n_seqs, n_steps = 256, 100
 
         train(net, encoded, epochs=25, n_seqs=n_seqs, n_steps=n_steps, lr=0.001, cuda=True, print_every=10)
 
@@ -286,15 +286,30 @@ if __name__ == '__main__':
                       'state_dict': net.state_dict(),
                       'tokens': net.chars}
 
-        with open(model_name, 'wb') as f:
-            torch.save(checkpoint, f)
+        with open(model_name, 'wb') as torch_writer:
+            torch.save(checkpoint, torch_writer)
 
         print(sample(net, 2000, prime='1, 0, Note_on_c, 0, 57, 64', top_k=5, cuda=True))
 
     else:
-        with open('rnn_1_epoch.net', 'rb') as f:
-            checkpoint = torch.load(f)
+        with open('rnn_1_epoch.net', 'rb') as neural_network:
+            checkpoint = torch.load(neural_network)
 
         loaded = CharRNN(checkpoint['tokens'], n_hidden=checkpoint['n_hidden'], n_layers=checkpoint['n_layers'])
         loaded.load_state_dict(checkpoint['state_dict'])
-        print(sample(loaded, 2000, cuda=True, top_k=5, prime='1, 0, Note_on_c, 0, 55, 72'))
+        rnn_output = sample(loaded, 2000, cuda=True, top_k=5, prime='1, 0, Note_on_c, 0, 55, 72')
+
+        # TODO: Implement Midi file creation from sample
+        buffer_path = '../data/OutputBuffer.csv'
+
+        with open(buffer_path, 'w') as buffer_csv:
+            buffer_csv.writelines(rnn_output)
+        buffer_csv.close()
+
+        with open(buffer_path, 'r') as buffer_reader:
+            lines = buffer_reader.readlines()
+        buffer_reader.close()
+
+        with open(buffer_path, 'w') as buffer_csv:
+            buffer_csv.writelines(lines[:-1])
+        buffer_csv.close()
