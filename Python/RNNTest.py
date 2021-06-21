@@ -2,6 +2,7 @@ import numpy as np
 import torch
 from torch import nn
 import torch.nn.functional as F
+import Python.MidiAndCSVTools as midi_tool
 
 with open('../data/TrainData.csv', 'r') as data_reader:
     text = data_reader.read()
@@ -300,16 +301,5 @@ if __name__ == '__main__':
         rnn_output = sample(loaded, 2000, cuda=True, top_k=5, prime='1, 0, Note_on_c, 0, 55, 72')
 
         # TODO: Implement Midi file creation from sample
-        buffer_path = '../data/OutputBuffer.csv'
-
-        with open(buffer_path, 'w') as buffer_csv:
-            buffer_csv.writelines(rnn_output)
-        buffer_csv.close()
-
-        with open(buffer_path, 'r') as buffer_reader:
-            lines = buffer_reader.readlines()
-        buffer_reader.close()
-
-        with open(buffer_path, 'w') as buffer_csv:
-            buffer_csv.writelines(lines[:-1])
-        buffer_csv.close()
+        output_path = '../Generated Midi/generated.mid'
+        midi_tool.generate_midi_from_output(rnn_output, output_path)
