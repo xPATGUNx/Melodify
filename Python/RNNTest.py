@@ -2,21 +2,34 @@ import numpy as np
 import torch
 from torch import nn
 import torch.nn.functional as F
-import Python.MidiAndCSVTools as midi_tool
+import Python.MidiAndCSVTools as midiTool
 
+# open csv file and read in data as `training_data`
 with open('../data/TrainData.csv', 'r') as data_reader:
-    text = data_reader.read()
+    training_data = data_reader.read()
 
-chars = tuple(set(text))
+# encode the training data and map each character to an integer and vice versa
 
-int2char = dict(enumerate(chars))
+# we create two dictionaries:
+# 1. int_to_char, which maps integers to characters
+# 2. char_to_int, which maps characters to unique integers
 
-char2int = {ch: ii for ii, ch in int2char.items()}
+chars = tuple(set(training_data))
 
-encoded = np.array([char2int[ch] for ch in text])
+int_to_char = dict(enumerate(chars))
+
+char_to_int = {ch: ii for ii, ch in int_to_char.items()}
+
+encoded = np.array([char_to_int[ch] for ch in training_data])
 
 
 def one_hot_encode(arr, n_labels):
+    """
+    A function to one-hot encode the mapped training data.
+    :param arr: Array you want to one-hot encode.
+    :param n_labels: The amount of items in the array.
+    :return: Returns a one-hot encoded array.
+    """
 
     one_hot = np.zeros((np.multiply(*arr.shape), n_labels), dtype=np.float32)
 
@@ -300,6 +313,5 @@ if __name__ == '__main__':
         loaded.load_state_dict(checkpoint['state_dict'])
         rnn_output = sample(loaded, 2000, cuda=True, top_k=5, prime='1, 0, Note_on_c, 0, 55, 72')
 
-        # TODO: Implement Midi file creation from sample
-        output_path = '../Generated Midi/generated.mid'
-        midi_tool.generate_midi_from_output(rnn_output, output_path)
+        output_path = '../Generated Midi/generated 02.mid'
+        midiTool.generate_midi_from_output(rnn_output, output_path)
